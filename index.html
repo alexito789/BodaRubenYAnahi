@@ -2,167 +2,157 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Nuestra Boda | Rubén & Anahí</title>
 
-  <!-- Metadatos para WhatsApp y redes -->
+  <!-- Metadatos de Vista Previa para WhatsApp / Facebook -->
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="Nuestra Boda | Rubén & Anahí" />
-  <meta property="og:description" content="Acompáñanos a celebrar nuestro gran día el 26 de Diciembre, 2026." />
+  <meta property="og:description" content="Nos casamos el 26 de Diciembre, 2026. ¡Acompáñanos a celebrar!" />
   <meta property="og:image" content="foto1.jpg" />
 
-  <!-- Fuentes elegantes de Google Fonts -->
+  <!-- Tipografías de alta gama -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 
-  <!-- Librería de animaciones al hacer scroll (AOS) -->
+  <!-- Librería de animaciones al scroll (AOS) -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <style>
     :root {
-      --gold: #c5a059;
-      --gold-light: #edd38c;
-      --gold-gradient: linear-gradient(135deg, #d4af37 0%, #fae19c 50%, #a67c2e 100%);
-      --dark-bg: #1c1917;
-      --soft-bg: #f9f7f3;
-      --card-bg: #ffffff;
-      --text-dark: #332f2b;
-      --text-muted: #78716c;
-      --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Montserrat', sans-serif;
+      --gold-primary: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-dark: #99731f;
+      --gold-gradient: linear-gradient(135deg, #b88628 0%, #ecd287 40%, #c5a059 70%, #8c6a28 100%);
+      --dark-theme: #141210;
+      --soft-cream: #faf8f5;
+      --pure-white: #ffffff;
+      --font-names: 'Cormorant Garamond', serif;
+      --font-titles: 'Cinzel', serif;
+      --font-body: 'Montserrat', sans-serif;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      background-color: var(--soft-bg);
-      color: var(--text-dark);
-      font-family: var(--font-sans);
+      background-color: var(--soft-cream);
+      color: #2c2724;
+      font-family: var(--font-body);
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
     }
 
-    /* =========================================
-       1. ENVOLTORIO Y SELLO DE LACRE INICIAL
-       ========================================= */
+    /* ====================================================
+       1. ENVOLTORIO CINEMATOGRÁFICO CON SELLO
+       ==================================================== */
     #envelope-screen {
       position: fixed;
       inset: 0;
-      z-index: 9999;
-      background: #0d0d0d;
+      z-index: 99999;
+      background: #080706;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+      overflow: hidden;
+      transition: visibility 1.2s;
     }
 
     .envelope-door {
       position: absolute;
       top: 0;
-      width: 50%;
+      width: 50.5%;
       height: 100%;
-      background: #121110;
-      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+      background: radial-gradient(circle at center, #1b1714 0%, #0a0908 100%);
+      z-index: 2;
+      transition: transform 1.3s cubic-bezier(0.77, 0, 0.175, 1);
     }
-    .door-left {
-      left: 0;
-      border-right: 1px solid rgba(212, 175, 55, 0.3);
-    }
-    .door-right {
-      right: 0;
-      border-left: 1px solid rgba(212, 175, 55, 0.3);
-    }
+    .door-left { left: 0; border-right: 1px solid rgba(212, 175, 55, 0.25); }
+    .door-right { right: 0; border-left: 1px solid rgba(212, 175, 55, 0.25); }
 
-    .cord {
+    .envelope-cord {
       position: absolute;
       width: 2px;
       height: 100%;
-      background: linear-gradient(to bottom, transparent, #8a733e, transparent);
-      z-index: 2;
+      background: linear-gradient(to bottom, transparent, var(--gold-primary), transparent);
+      z-index: 3;
     }
 
-    .wax-seal {
+    .wax-seal-wrapper {
       position: relative;
       z-index: 10;
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ecd287 0%, #b88628 55%, #6a490f 100%);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.6);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       cursor: pointer;
-      border: 3px solid rgba(138, 102, 33, 0.75);
-      animation: sealPulse 2.4s infinite ease-in-out;
-      transition: transform 0.3s ease;
+    }
+
+    .wax-seal {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #eed998 0%, #b88628 50%, #5e3f08 100%);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.9), 0 0 25px rgba(212, 175, 55, 0.4), inset 0 2px 4px rgba(255,255,255,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 3px solid rgba(138, 102, 33, 0.7);
+      animation: sealBreathing 2.4s infinite ease-in-out;
+      transition: transform 0.4s ease;
     }
 
     .wax-seal:hover {
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
 
     .wax-seal svg {
-      width: 46px;
-      height: 46px;
-      fill: #432a05;
+      width: 50px;
+      height: 50px;
+      fill: #3b2302;
       filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.4));
     }
 
-    .wax-seal-text {
-      position: absolute;
-      bottom: -45px;
+    .seal-label {
+      margin-top: 18px;
       color: #ebd7b2;
-      font-size: 0.8rem;
-      letter-spacing: 4px;
+      font-size: 0.75rem;
+      letter-spacing: 5px;
       text-transform: uppercase;
       font-weight: 300;
-      pointer-events: none;
-      white-space: nowrap;
       animation: pulseText 2s infinite ease-in-out;
     }
 
-    @keyframes sealPulse {
+    @keyframes sealBreathing {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.06); }
     }
-
     @keyframes pulseText {
-      0%, 100% { opacity: 0.7; }
+      0%, 100% { opacity: 0.6; }
       50% { opacity: 1; }
     }
 
-    .open-envelope .door-left { transform: translateX(-100%); }
-    .open-envelope .door-right { transform: translateX(100%); }
-    .open-envelope .wax-seal {
+    /* Estado de apertura */
+    .opening .door-left { transform: translateX(-101%); }
+    .opening .door-right { transform: translateX(101%); }
+    .opening .wax-seal-wrapper {
       transform: scale(0);
       opacity: 0;
-      transition: transform 0.6s ease, opacity 0.4s ease;
-    }
-    .open-envelope .wax-seal-text { opacity: 0; }
-    .envelope-hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+      transition: all 0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     }
 
-    /* =========================================
+    /* ====================================================
        2. HERO / PORTADA
-       ========================================= */
+       ==================================================== */
     .hero {
       position: relative;
       min-height: 100vh;
       width: 100%;
-      background: linear-gradient(to top, rgba(14, 12, 10, 0.75) 0%, rgba(0,0,0,0.2) 50%, rgba(14, 12, 10, 0.5) 100%), 
+      background: linear-gradient(to top, rgba(16, 13, 11, 0.8) 0%, rgba(0,0,0,0.2) 45%, rgba(16, 13, 11, 0.6) 100%),
                   url('foto1.jpg') center/cover no-repeat;
       display: flex;
       flex-direction: column;
@@ -170,184 +160,206 @@
       align-items: center;
       text-align: center;
       color: #fff;
-      padding: 30px 20px;
+      padding: 40px 20px;
     }
 
     .hero-subtitle {
+      font-family: var(--font-titles);
       font-size: 0.85rem;
-      letter-spacing: 5px;
+      letter-spacing: 6px;
       text-transform: uppercase;
-      font-weight: 300;
-      margin-bottom: 12px;
       color: #f7ede1;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      margin-bottom: 15px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
     }
 
     .hero-names {
-      font-family: var(--font-serif);
-      font-size: 3.5rem;
+      font-family: var(--font-names);
+      font-size: clamp(3rem, 10vw, 4.8rem);
       font-weight: 400;
       line-height: 1.1;
       margin-bottom: 16px;
       background: var(--gold-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.5));
+      filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6));
     }
 
-    .hero-divider {
-      width: 80px;
-      height: 1.5px;
+    .gold-line {
+      width: 70px;
+      height: 2px;
       background: var(--gold-gradient);
-      margin: 0 auto 18px auto;
+      margin: 0 auto 20px auto;
+      border-radius: 2px;
     }
 
     .hero-date {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       letter-spacing: 3px;
       font-weight: 300;
-      color: #f5f1eb;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      color: #faf5ed;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
 
-    /* =========================================
-       3. CONTADOR
-       ========================================= */
+    /* ====================================================
+       3. CONTADOR REGRESIVO
+       ==================================================== */
     .countdown-section {
-      padding: 65px 20px;
+      padding: 70px 20px;
       text-align: center;
-      background-color: #f2ede4;
+      background-color: #f3eee6;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
     }
 
-    .countdown-title {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      color: var(--text-dark);
-      margin-bottom: 30px;
+    .section-header {
+      font-family: var(--font-names);
+      font-size: 2.3rem;
       font-weight: 400;
+      color: #2d2621;
+      margin-bottom: 25px;
     }
 
     .countdown-grid {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      max-width: 480px;
+      gap: 12px;
+      max-width: 520px;
       margin: 0 auto;
     }
 
     .countdown-card {
       flex: 1;
       padding: 16px 8px;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-      border: 1px solid rgba(197, 160, 89, 0.3);
-      transition: transform 0.3s ease;
+      background: var(--pure-white);
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      position: relative;
+      overflow: hidden;
     }
 
-    .countdown-card:hover {
-      transform: translateY(-4px);
+    .countdown-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold-gradient);
     }
 
-    .countdown-number {
-      font-family: var(--font-serif);
-      font-size: 2.1rem;
+    .countdown-num {
+      font-family: var(--font-names);
+      font-size: 2.2rem;
       font-weight: 600;
       color: #8c6a28;
       line-height: 1;
     }
 
-    .countdown-label {
+    .countdown-tag {
       font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: var(--text-muted);
-      margin-top: 6px;
+      color: #837970;
+      margin-top: 8px;
     }
 
-    /* =========================================
+    /* ====================================================
        4. DETALLES DEL EVENTO
-       ========================================= */
+       ==================================================== */
     .details-section {
-      padding: 80px 20px;
-      max-width: 650px;
+      padding: 90px 20px;
+      max-width: 680px;
       margin: 0 auto;
       text-align: center;
     }
 
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: 2.5rem;
-      font-weight: 400;
-      margin-bottom: 12px;
-      color: var(--text-dark);
-    }
-
     .event-card {
-      background: var(--card-bg);
-      padding: 45px 30px;
-      border-radius: 18px;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
-      border: 1px solid rgba(197, 160, 89, 0.3);
-      margin-top: 30px;
-    }
-
-    .event-block {
-      margin-bottom: 30px;
+      background: var(--pure-white);
+      padding: 50px 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.3);
       position: relative;
     }
-    .event-block:last-child {
-      margin-bottom: 0;
+
+    .event-item {
+      margin-bottom: 35px;
+    }
+    .event-item:last-of-type {
+      margin-bottom: 35px;
     }
 
-    .event-label {
-      font-size: 0.75rem;
+    .event-type {
+      font-family: var(--font-titles);
+      font-size: 0.78rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      color: var(--gold);
+      color: var(--gold-dark);
       font-weight: 600;
       margin-bottom: 8px;
     }
 
-    .event-name {
-      font-family: var(--font-serif);
-      font-size: 1.55rem;
-      color: var(--text-dark);
+    .event-place {
+      font-family: var(--font-names);
+      font-size: 1.65rem;
+      color: #24201d;
       margin-bottom: 4px;
     }
 
-    .event-info {
+    .event-detail {
       font-size: 0.95rem;
-      color: var(--text-muted);
+      color: #726b64;
       font-weight: 300;
     }
 
-    .btn-maps {
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .btn-gold {
       display: inline-block;
-      margin-top: 25px;
-      padding: 14px 30px;
+      width: 100%;
+      max-width: 320px;
+      padding: 15px 25px;
       background: var(--gold-gradient);
-      color: #2b1f06;
+      color: #291d04;
       font-weight: 600;
       font-size: 0.8rem;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       text-decoration: none;
-      border-radius: 35px;
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+      border-radius: 40px;
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
       transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
     }
 
-    .btn-maps:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 10px 28px rgba(212, 175, 55, 0.6);
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(212, 175, 55, 0.5);
     }
 
-    /* =========================================
-       5. COLLAGE DE FOTOS CON EFECTOS
-       ========================================= */
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--gold-primary);
+      color: #755214;
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: rgba(212, 175, 55, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* ====================================================
+       5. COLLAGE DE FOTOS INTERACTIVO
+       ==================================================== */
     .gallery-section {
-      padding: 40px 20px 80px 20px;
+      padding: 40px 20px 90px 20px;
       max-width: 950px;
       margin: 0 auto;
       text-align: center;
@@ -360,250 +372,290 @@
       margin-top: 35px;
     }
 
-    .gallery-item {
+    .gallery-card {
       position: relative;
       overflow: hidden;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      border: 1px solid rgba(197, 160, 89, 0.2);
-      background: #dfdad3;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      background: #eee8e0;
+      cursor: pointer;
     }
 
-    .gallery-item.large {
+    .gallery-card.full-width {
       grid-column: span 2;
     }
 
-    .gallery-item img {
+    .gallery-card img {
       width: 100%;
       height: 100%;
-      min-height: 270px;
-      max-height: 480px;
+      min-height: 280px;
+      max-height: 500px;
       object-fit: cover;
       display: block;
-      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
+      transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .gallery-item:hover img {
+    .gallery-card:hover img {
       transform: scale(1.06);
-      filter: brightness(1.05);
     }
 
-    /* =========================================
+    /* ====================================================
        6. CIERRE
-       ========================================= */
+       ==================================================== */
     .closing-section {
-      background: #f4efe7;
-      padding: 85px 25px;
+      background: #f5f0e8;
+      padding: 90px 25px;
       text-align: center;
-      border-top: 1px solid rgba(197, 160, 89, 0.2);
-    }
-
-    .closing-title {
-      font-family: var(--font-serif);
-      font-size: 2.4rem;
-      margin-bottom: 20px;
-      color: var(--text-dark);
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
     }
 
     .closing-text {
-      font-size: 0.98rem;
-      line-height: 1.9;
-      max-width: 520px;
-      margin: 0 auto 30px auto;
-      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 2;
+      max-width: 540px;
+      margin: 0 auto 35px auto;
+      color: #6b635b;
       font-weight: 300;
     }
 
     .footer {
-      background: #1f1b18;
-      padding: 45px 20px;
+      background: #171412;
+      padding: 50px 20px;
       text-align: center;
     }
 
     .monogram {
-      font-family: var(--font-serif);
-      font-size: 2.4rem;
-      letter-spacing: 6px;
+      font-family: var(--font-names);
+      font-size: 2.6rem;
+      letter-spacing: 8px;
       background: var(--gold-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
     }
 
-    @media (max-width: 480px) {
-      .hero-names { font-size: 2.7rem; }
-      .countdown-grid { gap: 8px; }
-      .countdown-number { font-size: 1.55rem; }
-      .countdown-card { padding: 10px 4px; }
-      .gallery-item.large { grid-column: span 2; }
+    /* ====================================================
+       MODAL DE FOTO EXPANDIDA (LIGHTBOX)
+       ==================================================== */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 100000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    #lightbox img {
+      max-width: 95%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 1. Pantalla del Sobre con Sello -->
+  <!-- Modal Pantalla Completa para Fotos -->
+  <div id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" alt="Ampliación" />
+  </div>
+
+  <!-- 1. PANTALLA INICIAL DE APERTURA CON LACRE -->
   <div id="envelope-screen">
     <div class="envelope-door door-left"></div>
     <div class="envelope-door door-right"></div>
-    <div class="cord"></div>
+    <div class="envelope-cord"></div>
 
-    <div class="wax-seal" id="seal-btn">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 2C12 2 10.5 5.5 8 7C5.5 8.5 2 9 2 9C2 9 5.5 10.5 7 13C8.5 15.5 9 19 9 19C9 19 10.5 15.5 13 14C15.5 12.5 19 12 19 12C19 12 15.5 10.5 14 8C12.5 5.5 12 2 12 2Z"/>
-      </svg>
-      <span class="wax-seal-text">Toca para abrir</span>
+    <div class="wax-seal-wrapper" id="seal-trigger">
+      <div class="wax-seal">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C12 2 10.5 5.5 8 7C5.5 8.5 2 9 2 9C2 9 5.5 10.5 7 13C8.5 15.5 9 19 9 19C9 19 10.5 15.5 13 14C15.5 12.5 19 12 19 12C19 12 15.5 10.5 14 8C12.5 5.5 12 2 12 2Z"/>
+        </svg>
+      </div>
+      <span class="seal-label">Toca para abrir</span>
     </div>
   </div>
 
-  <!-- 2. Portada Principal -->
+  <!-- 2. PORTADA PRINCIPAL -->
   <section class="hero">
     <div class="hero-subtitle" data-aos="fade-down" data-aos-duration="1200">Nuestra Boda</div>
-    <h1 class="hero-names" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200">Rubén & Anahí</h1>
-    <div class="hero-divider" data-aos="scale-up" data-aos-duration="1000" data-aos-delay="400"></div>
+    <h1 class="hero-names" data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="200">Rubén & Anahí</h1>
+    <div class="gold-line" data-aos="scale-up" data-aos-duration="800" data-aos-delay="400"></div>
     <div class="hero-date" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="500">26 de Diciembre, 2026</div>
   </section>
 
-  <!-- 3. Contador Regresivo -->
+  <!-- 3. CONTADOR REGRESIVO -->
   <section class="countdown-section">
-    <h2 class="countdown-title" data-aos="fade-up" data-aos-duration="900">Faltan</h2>
-    <div class="countdown-grid" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+    <h2 class="section-header" data-aos="fade-up">Faltan</h2>
+    <div class="countdown-grid" data-aos="fade-up" data-aos-delay="200">
       <div class="countdown-card">
-        <div class="countdown-number" id="days">00</div>
-        <div class="countdown-label">Días</div>
+        <div class="countdown-num" id="days">00</div>
+        <div class="countdown-tag">Días</div>
       </div>
       <div class="countdown-card">
-        <div class="countdown-number" id="hours">00</div>
-        <div class="countdown-label">Horas</div>
+        <div class="countdown-num" id="hours">00</div>
+        <div class="countdown-tag">Horas</div>
       </div>
       <div class="countdown-card">
-        <div class="countdown-number" id="minutes">00</div>
-        <div class="countdown-label">Min</div>
+        <div class="countdown-num" id="minutes">00</div>
+        <div class="countdown-tag">Min</div>
       </div>
       <div class="countdown-card">
-        <div class="countdown-number" id="seconds">00</div>
-        <div class="countdown-label">Seg</div>
+        <div class="countdown-num" id="seconds">00</div>
+        <div class="countdown-tag">Seg</div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Detalles del Evento -->
+  <!-- 4. DETALLES DEL EVENTO -->
   <section class="details-section">
-    <h2 class="section-title" data-aos="fade-up" data-aos-duration="900">Detalles del Evento</h2>
-    <div class="hero-divider" data-aos="scale-up" data-aos-duration="800"></div>
+    <h2 class="section-header" data-aos="fade-up">Detalles del Evento</h2>
+    <div class="gold-line" data-aos="scale-up"></div>
 
-    <div class="event-card" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="150">
-      <div class="event-block" data-aos="fade-up" data-aos-duration="800" data-aos-delay="250">
-        <div class="event-label">Ceremonia</div>
-        <div class="event-name">Iglesia Nuestra Señora de Guadalupe</div>
-        <div class="event-info">4:00 PM</div>
+    <div class="event-card" data-aos="fade-up" data-aos-delay="150">
+      <div class="event-item" data-aos="fade-up" data-aos-delay="250">
+        <div class="event-type">Ceremonia Religiosa</div>
+        <div class="event-place">Iglesia Nuestra Señora de Guadalupe</div>
+        <div class="event-detail">4:00 PM</div>
       </div>
 
-      <div class="event-block" data-aos="fade-up" data-aos-duration="800" data-aos-delay="350">
-        <div class="event-label">Lugar</div>
-        <div class="event-name">La Estancia</div>
-        <div class="event-info">Villa de Cos, Zacatecas</div>
+      <div class="event-item" data-aos="fade-up" data-aos-delay="350">
+        <div class="event-type">Lugar</div>
+        <div class="event-place">La Estancia</div>
+        <div class="event-detail">Villa de Cos, Zacatecas</div>
       </div>
 
-      <div class="event-block" data-aos="fade-up" data-aos-duration="800" data-aos-delay="450">
-        <div class="event-label">Recepción</div>
-        <div class="event-name">Casa de la Fam. Fernández</div>
+      <div class="event-item" data-aos="fade-up" data-aos-delay="450">
+        <div class="event-type">Recepción</div>
+        <div class="event-place">Casa de la Fam. Fernández</div>
       </div>
 
-      <div data-aos="zoom-in" data-aos-duration="900" data-aos-delay="550">
-        <a class="btn-maps" href="https://maps.google.com/?q=La+Estancia+Villa+de+Cos+Zacatecas" target="_blank" rel="noopener noreferrer">
-          📍 Ver Ubicación en Maps
+      <div class="action-buttons" data-aos="zoom-in" data-aos-delay="550">
+        <!-- Enlace a Google Maps -->
+        <a class="btn-gold" href="https://maps.google.com/?q=La+Estancia+Villa+de+Cos+Zacatecas" target="_blank" rel="noopener noreferrer">
+          📍 Abrir Ubicación en Maps
+        </a>
+
+        <!-- Botón para confirmar en WhatsApp -->
+        <a class="btn-gold btn-outline" href="https://api.whatsapp.com/send?text=¡Hola!%20Confirmo%20con%20mucha%20alegría%20mi%20asistencia%20a%20la%20boda%20de%20Rubén%20y%20Anahí.%20🥂" target="_blank">
+          💬 Confirmar Asistencia
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 5. Collage de Fotos con Animaciones (archivos .jpg) -->
+  <!-- 5. COLLAGE DE FOTOS INTERACTIVO -->
   <section class="gallery-section">
-    <h2 class="section-title" data-aos="fade-up" data-aos-duration="900">Nuestros Momentos</h2>
-    <div class="hero-divider" data-aos="scale-up" data-aos-duration="800"></div>
+    <h2 class="section-header" data-aos="fade-up">Nuestros Momentos</h2>
+    <div class="gold-line" data-aos="scale-up"></div>
 
     <div class="gallery-grid">
-      <div class="gallery-item large" data-aos="fade-up" data-aos-duration="1000">
-        <img src="foto2.jpg" alt="Rubén y Anahí juntos" loading="lazy" />
+      <div class="gallery-card full-width" data-aos="fade-up" onclick="openPhoto('foto2.jpg')">
+        <img src="foto2.jpg" alt="Rubén y Anahí" loading="lazy" />
       </div>
-
-      <div class="gallery-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
-        <img src="foto3.jpg" alt="Momento Rubén y Anahí" loading="lazy" />
+      <div class="gallery-card" data-aos="fade-right" data-aos-delay="100" onclick="openPhoto('foto3.jpg')">
+        <img src="foto3.jpg" alt="Rubén y Anahí" loading="lazy" />
       </div>
-
-      <div class="gallery-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-        <img src="foto4.jpg" alt="Rubén y Anahí sesión" loading="lazy" />
+      <div class="gallery-card" data-aos="fade-left" data-aos-delay="200" onclick="openPhoto('foto4.jpg')">
+        <img src="foto4.jpg" alt="Rubén y Anahí" loading="lazy" />
       </div>
-
-      <div class="gallery-item large" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-        <img src="foto1.jpg" alt="Rubén y Anahí mostrando anillo" loading="lazy" />
+      <div class="gallery-card full-width" data-aos="fade-up" data-aos-delay="250" onclick="openPhoto('foto1.jpg')">
+        <img src="foto1.jpg" alt="Rubén y Anahí" loading="lazy" />
       </div>
     </div>
   </section>
 
-  <!-- 6. Cierre con Amor -->
+  <!-- 6. CIERRE -->
   <section class="closing-section">
-    <h2 class="closing-title" data-aos="fade-up" data-aos-duration="900">Con todo nuestro amor</h2>
-    <div class="hero-divider" data-aos="scale-up" data-aos-duration="800"></div>
-    <p class="closing-text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+    <h2 class="section-header" data-aos="fade-up">Con todo nuestro amor</h2>
+    <div class="gold-line" data-aos="scale-up"></div>
+    <p class="closing-text" data-aos="fade-up" data-aos-delay="200">
       Queremos compartir con ustedes uno de los días más importantes de nuestras vidas. Su presencia será el mejor regalo que podamos recibir.
     </p>
   </section>
 
-  <!-- Pie de página -->
+  <!-- PIE DE PÁGINA -->
   <footer class="footer">
-    <div class="monogram" data-aos="zoom-in" data-aos-duration="1000">R & A</div>
+    <div class="monogram" data-aos="zoom-in">R & A</div>
   </footer>
 
-  <!-- Script de animaciones AOS -->
+  <!-- Scripts: Confetti, Animaciones AOS y GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
   <script>
-    // Inicializar animaciones de scroll
+    // Iniciar librería AOS
     AOS.init({
       once: true,
-      offset: 60,
-      duration: 800,
+      offset: 50,
+      duration: 900,
       easing: 'ease-out-cubic'
     });
 
-    // 1. Apertura del sobre interactivo
-    const sealBtn = document.getElementById('seal-btn');
+    // Función para ver fotos en grande
+    function openPhoto(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    // 1. Apertura Cinemática y lluvia de partículas doradas
+    const sealBtn = document.getElementById('seal-trigger');
     const envelope = document.getElementById('envelope-screen');
 
     sealBtn.addEventListener('click', () => {
-      envelope.classList.add('open-envelope');
+      // Efecto de lluvia dorada elegante
+      confetti({
+        particleCount: 50,
+        spread: 80,
+        origin: { y: 0.5 },
+        colors: ['#d4af37', '#f3e5ab', '#aa8232']
+      });
+
+      envelope.classList.add('opening');
+
       setTimeout(() => {
-        envelope.classList.add('envelope-hidden');
-        // Refrescar AOS al quitar el sobre para disparar animaciones de la portada
-        AOS.refresh();
+        envelope.style.opacity = '0';
+        setTimeout(() => {
+          envelope.style.display = 'none';
+          AOS.refresh(); // Disparar animaciones de entrada en la página
+        }, 600);
       }, 900);
     });
 
-    // 2. Contador regresivo al 26 de Diciembre de 2026 (4:00 PM)
-    const weddingDate = new Date('December 26, 2026 16:00:00').getTime();
+    // 2. Contador regresivo exacto
+    const targetWedding = new Date('December 26, 2026 16:00:00').getTime();
 
-    function updateCountdown() {
+    function refreshClock() {
       const now = new Date().getTime();
-      const difference = weddingDate - now;
+      const diff = targetWedding - now;
 
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      if (diff > 0) {
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById('days').innerText = String(days).padStart(2, '0');
-        document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-        document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        document.getElementById('days').innerText = String(d).padStart(2, '0');
+        document.getElementById('hours').innerText = String(h).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(m).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(s).padStart(2, '0');
       } else {
-        document.querySelector('.countdown-section').innerHTML = '<h2 class="countdown-title">¡Hoy es nuestro gran día!</h2>';
+        document.querySelector('.countdown-section').innerHTML = '<h2 class="section-header">¡Hoy es nuestro gran día!</h2>';
       }
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    setInterval(refreshClock, 1000);
+    refreshClock();
   </script>
 </body>
 </html>
